@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+groq
+python-dotenv
+PyJWT
+passlib
+bcrypt
+pymysql
+cryptography
