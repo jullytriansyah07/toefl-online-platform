@@ -3,16 +3,14 @@
   "builds": [
     {
       "src": "backend-speaking-test/main.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb",
-        "runtime": "python3.10"
-      }
+      "use": "@vercel/python"
     },
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "build" }
+      "config": {
+        "distDir": "build"
+      }
     }
   ],
   "routes": [
@@ -21,8 +19,16 @@
       "dest": "backend-speaking-test/main.py"
     },
     {
-      "src": "/(.*)",
-      "dest": "/frontend/$1"
+      "src": "/static/(.*)",
+      "dest": "/frontend/build/static/$1"
+    },
+    {
+      "src": "^/(.*)",
+      "dest": "/frontend/build/$1"
+    },
+    {
+      "src": "/.*",
+      "dest": "/frontend/build/index.html"
     }
   ]
 }
